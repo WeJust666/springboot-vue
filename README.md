@@ -1,0 +1,1 @@
+一个前后端分离仓库管理系统，前端用vue+elementUI、后端用springboot+mybatisPlus、数据库mysql

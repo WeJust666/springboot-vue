@@ -1,0 +1,73 @@
+-- auto-generated definition
+create table user
+(
+    id       int auto_increment comment '主键'
+        primary key,
+    no       varchar(20)            null comment '账号',
+    name     varchar(20)            null comment '名字',
+    password varchar(20)            null comment '密码',
+    age      int                    null,
+    sex      int                    null comment '性别',
+    phone    varchar(20)            null comment '电话',
+    role_id  int                    null comment '角色',
+    isValid  varchar(4) default 'Y' null comment '是否有效'
+);
+
+-- auto-generated definition
+create table storage
+(
+    id     int auto_increment comment '主键'
+        primary key,
+    name   varchar(100)  not null comment '仓库名',
+    remark varchar(1000) null comment '备注'
+);
+
+-- auto-generated definition
+create table goods
+(
+    id        int auto_increment comment '主键'
+        primary key,
+    name      varchar(100)  not null comment '货名',
+    storage   int           not null comment '仓库',
+    goodsType int           not null comment '分类',
+    count     int           null comment '数量',
+    remark    varchar(1000) null comment '备注'
+);
+
+-- auto-generated definition
+create table goodstype
+(
+    id     int auto_increment comment '主键'
+        primary key,
+    name   varchar(100)  not null comment '分类名',
+    remark varchar(1000) null comment '备注'
+);
+
+-- auto-generated definition
+create table menu
+(
+    id             int          not null
+        primary key,
+    menuCode       varchar(8)   null comment '菜单编码',
+    menuName       varchar(16)  null comment '菜单名字',
+    menuLevel      varchar(2)   null comment '菜单级别',
+    menuParentCode varchar(8)   null comment '菜单的父code',
+    menuClick      varchar(16)  null comment '点击触发的函数',
+    menuRight      varchar(8)   null comment '权限 0超级管理员，1表示管理员，2表示普通用户，可以用逗号组合使用',
+    menuComponent  varchar(200) null,
+    menuIcon       varchar(100) null
+);
+
+-- auto-generated definition
+create table record
+(
+    id         int auto_increment comment '主键'
+        primary key,
+    goods      int                                 not null comment '货品id',
+    userId     int                                 null comment '取货人/补货人',
+    admin_id   int                                 null comment '操作人id',
+    count      int                                 null comment '数量',
+    createtime timestamp default CURRENT_TIMESTAMP null comment '操作时间',
+    remark     varchar(1000)                       null comment '备注'
+);
+
